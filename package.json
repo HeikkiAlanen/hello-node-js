@@ -1,0 +1,25 @@
+{
+  "name": "hello-node-js",
+  "version": "0.1.0",
+  "description": "Node.js learning.",
+  "main": "task-1.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-eslint": "^1.1.0",
+    "load-grunt-tasks": "^0.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/HeikkiAlanen/hello-node-js.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HeikkiAlanen/hello-node-js/issues"
+  },
+  "homepage": "https://github.com/HeikkiAlanen/hello-node-js"
+}
