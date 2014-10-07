@@ -7,10 +7,11 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-eslint": "^1.1.0",
-    "load-grunt-tasks": "^0.6.0"
+    "load-grunt-tasks": "^0.6.0",
+    "nodeunit": "^0.9.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nodeunit ./test/task-3-2_spec.js"
   },
   "repository": {
     "type": "git",
