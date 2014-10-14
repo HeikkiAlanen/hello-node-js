@@ -12,7 +12,7 @@
     "nodeunit": "^0.9.0"
   },
   "scripts": {
-    "test": "nodeunit ./test/task-3-2_spec.js"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",
