@@ -23,4 +23,4 @@ Example 4: `~1.2.3`, would match the versions which are as new as or newer 1.2.0
 Example 5: `^1.2.3`, would match the versions which are as new as or newer 1.2.0 but older than 2.0.0
 
 Example 6 from VersionEye: `gulp-jshint : 1.8.5`: 
-![alt text](https://github.com/HeikkiAlanen/hello-node-js/gulp-jshint-1.8.5.JPG "gulp-jshint v1.8.5")
+![gulp-jshint v1.8.5](https://github.com/HeikkiAlanen/hello-node-js/blob/master/gulp-jshint-1.8.5.JPG "gulp-jshint v1.8.5")
