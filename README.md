@@ -24,3 +24,5 @@ Example 5: `^1.2.3`, would match the versions which are as new as or newer 1.2.0
 
 Example 6 from VersionEye: `gulp-jshint : 1.8.5`: 
 ![gulp-jshint v1.8.5](https://github.com/HeikkiAlanen/hello-node-js/blob/master/gulp-jshint-1.8.5.JPG "gulp-jshint v1.8.5")
+
+In this example one dependency does not match the criteria (through2) which means that status is *dependencies out of date*.
