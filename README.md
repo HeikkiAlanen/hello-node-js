@@ -26,3 +26,8 @@ Example 6 from VersionEye: `gulp-jshint : 1.8.5`:
 ![gulp-jshint v1.8.5](https://github.com/HeikkiAlanen/hello-node-js/blob/master/gulp-jshint-1.8.5.JPG "gulp-jshint v1.8.5")
 
 In this example one dependency does not match the criteria (through2) which means that status is *dependencies out of date*.
+
+### Front end package manager
+I would use package manager as Bower in projects with several third party dependencies and project needs the latest updates of the packages.
+
+If the project is small (just one or two libraries) or certain version of third party library must be used (won't be changed during the project), then it might be wise to add library directly under version control. 
