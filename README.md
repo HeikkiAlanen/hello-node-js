@@ -31,3 +31,6 @@ In this example one dependency does not match the criteria (through2) which mean
 I would use package manager as Bower in projects with several third party dependencies and project needs the latest updates of the packages.
 
 If the project is small (just one or two libraries) or certain version of third party library must be used (won't be changed during the project), then it might be wise to add library directly under version control. 
+
+### Minified npm packages
+q "A library for promises (CommonJS/Promises/A,B,D)". This npm module is downloaded 78298 times per day (last week). Package size without dependencies is 91 kB. I used Uglifyjs to minify two Javascript modules (q.js and queue.js). After minifying js files package size dropped to 57 kB. That means that bandwidth is saved 2,54 GB per day.
