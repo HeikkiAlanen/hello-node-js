@@ -2,7 +2,7 @@
 instrumentation:
     root: .
     default-excludes: true
-    excludes: ['Gruntfile.js','grunt-comparison.js','task-1.js','task-2.js']
+    excludes: ['Gruntfile.js','grunt-comparison.js','task-1.js','task-2.js','task-3.js']
     embed-source: false
     variable: __coverage__
     compact: false

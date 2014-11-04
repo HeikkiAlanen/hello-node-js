@@ -16,7 +16,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "coverage": "istanbul cover ./test/task-3-2_spec.js"
+    "coverage": "istanbul cover ./node_modules/nodeunit/bin/nodeunit ./test/task-3-2_spec.js"
   },
   "repository": {
     "type": "git",
