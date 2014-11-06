@@ -4,9 +4,10 @@
   "description": "Node.js learning.",
   "main": "task-1.js",
   "dependencies": {
+    "dateformat": "^1.0.8",
+    "filesize": "^2.0.4",
     "line-reader": "^0.2.4",
-    "request": "^2.47.0",
-    "dateformat": "^1.0.8"
+    "request": "^2.47.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

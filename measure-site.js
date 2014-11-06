@@ -6,6 +6,7 @@ var url = process.argv[2];
 var request = require('request');
 var fs = require('fs');
 var lineReader = require('line-reader');
+var fileSize = require('filesize');
 
 SCRIPTOPENTAG = "<script";
 SCRIPTCLOSETAG = "</script>";
@@ -18,7 +19,7 @@ if (url) {
         url = 'http://' + url;
     }
 
-    showText("Checking WEB-page: " + url + "\n");
+    showText("\nChecking WEB-page: " + url + "\n");
     
     // Read main page of the given WEB-page
     request(url, function (error, response, body) {
@@ -57,7 +58,7 @@ if (url) {
                     }).then(function () {
                         var stats = fs.statSync(htmlFile);
                         var fileSizeInBytes = stats["size"];
-                        showText("HTML file size: " + fileSizeInBytes + " B");
+                        showText("HTML file size: " + fileSize(fileSizeInBytes, {base: 2, round: 1}));
                         fs.unlinkSync(htmlFile);
                     });
                 }
@@ -78,7 +79,7 @@ function readJSFile(file) {
                 } else {
                     var stats = fs.statSync(tmpFile);
                     var fileSizeInBytes = stats["size"];
-                    showText("File: " + file + "   Filesize: " + fileSizeInBytes);
+                    showText("File: " + file + "   Filesize: " + fileSize(fileSizeInBytes, {base: 2, round: 1}));
                     fs.unlinkSync(tmpFile);
                 }
             });
