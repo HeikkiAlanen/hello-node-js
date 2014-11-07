@@ -61,13 +61,11 @@ function findScriptFile(line) {
         // Get content between tags
         var scriptContent = line.slice(scriptOpenTag + SCRIPTOPENTAG.length, scriptCloseTag);
         
-        // Change all '-characters to "-character
-        scriptContent = scriptContent.replace(/'/g, '"');
         // Get Javascript file name
         var srcAttr = scriptContent.search('src=');
         if (srcAttr >= 0) {
             var srcContent = scriptContent.slice(srcAttr + 5, scriptContent.length);
-            var srcClose = srcContent.search(/"/);
+            var srcClose = srcContent.search(/["']/);
             if (srcClose >= 1) {
                 srcContent = srcContent.slice(0, srcClose);
                 if (srcContent.indexOf('http://') === -1) {
