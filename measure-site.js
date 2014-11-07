@@ -8,9 +8,6 @@ var fs = require('fs');
 var lineReader = require('line-reader');
 var fileSize = require('filesize');
 
-SCRIPTOPENTAG = "<script";
-SCRIPTCLOSETAG = "</script>";
-
 var htmlFile = "./tmpHTML.txt";
 var tmpFileNbr = 0;
 
@@ -31,31 +28,12 @@ if (url) {
                 } else {
                     // read all lines from HTML-file:
                     lineReader.eachLine(htmlFile, function(line) {
-                        // Find script open and closing tags
-                        var scriptOpenTag = line.search(SCRIPTOPENTAG);
-                        var scriptCloseTag = line.search(SCRIPTCLOSETAG);
-                        
-                        // If script is found
-                        if (scriptOpenTag >= 0) {
-                            // Get content between tags
-                            var scriptContent = line.slice(scriptOpenTag + SCRIPTOPENTAG.length, scriptCloseTag);
-                            
-                            // Get Javascript file name
-                            var srcAttr = scriptContent.search('src=');
-                            if (srcAttr >= 0) {
-                                var srcContent = scriptContent.slice(srcAttr + 5, scriptContent.length);
-                                var srcClose = srcContent.search(/"/);
-                                if (srcClose >= 1) {
-                                    srcContent = srcContent.slice(0, srcClose);
-                                    if (srcContent.indexOf('http://') === -1) {
-                                        srcContent = url + srcContent;
-                                    }
-                                    // Read Javascript-file and print out the size of the file
-                                    readJSFile(srcContent);
-                                }
-                            }
+                        var scriptFile = findScriptFile(line);
+                        if (scriptFile) {
+                            readJSFile(scriptFile);
                         }
                     }).then(function () {
+                        // Get the size of the HTML file and print it out
                         var stats = fs.statSync(htmlFile);
                         var fileSizeInBytes = stats["size"];
                         showText("HTML file size: " + fileSize(fileSizeInBytes, {base: 2, round: 1}));
@@ -67,6 +45,39 @@ if (url) {
     });
 } else {
     showText("Give a valid URL.");
+}
+
+function findScriptFile(line) {
+    var SCRIPTOPENTAG = "<script";
+    var SCRIPTCLOSETAG = "</script>";
+    var retValue = false;
+    
+    // Find script open and closing tags
+    var scriptOpenTag = line.search(SCRIPTOPENTAG);
+    var scriptCloseTag = line.search(SCRIPTCLOSETAG);
+    
+    // If script is found
+    if (scriptOpenTag >= 0) {
+        // Get content between tags
+        var scriptContent = line.slice(scriptOpenTag + SCRIPTOPENTAG.length, scriptCloseTag);
+        
+        // Change all '-characters to "-character
+        scriptContent = scriptContent.replace(/'/g, '"');
+        // Get Javascript file name
+        var srcAttr = scriptContent.search('src=');
+        if (srcAttr >= 0) {
+            var srcContent = scriptContent.slice(srcAttr + 5, scriptContent.length);
+            var srcClose = srcContent.search(/"/);
+            if (srcClose >= 1) {
+                srcContent = srcContent.slice(0, srcClose);
+                if (srcContent.indexOf('http://') === -1) {
+                    srcContent = url + srcContent;
+                }
+                retValue = srcContent;
+            }
+        }
+    }
+    return (retValue);
 }
 
 function readJSFile(file) {
