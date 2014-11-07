@@ -57,7 +57,7 @@ function findScriptFile(line) {
     var scriptCloseTag = line.search(SCRIPTCLOSETAG);
     
     // If script is found
-    if (scriptOpenTag >= 0) {
+    if ((scriptOpenTag >= 0) && (scriptCloseTag > 0)) {
         // Get content between tags
         var scriptContent = line.slice(scriptOpenTag + SCRIPTOPENTAG.length, scriptCloseTag);
         
